@@ -8,14 +8,17 @@ var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
+var runSequence = require('run-sequence');
 
 var config = {
 	bootstrapDir: './bower_components/bootstrap-sass',
 	publicDir: './dist',
 };
 
+// Reload Page
 var reload = browserSync.reload;
 
+// Compiles Bootstrap SASS
 gulp.task('css', function() {
   return gulp.src('./app/scss/main.scss')
   .pipe(sass({
@@ -27,6 +30,7 @@ gulp.task('css', function() {
   }));
 });
 
+// Compiles Bootstrap Fonts
 gulp.task('fonts', function() {
   return gulp.src(config.bootstrapDir + '/assets/fonts/**/*')
   .pipe(gulp.dest(config.publicDir + '/fonts'))
@@ -35,6 +39,7 @@ gulp.task('fonts', function() {
   }));
 });
 
+// Compiles JS for Bootstrap and Project
 gulp.task('js', function() {
   return gulp.src([config.bootstrapDir + '/assets/javascripts/bootstrap.min.js', './app/js/**/*.js'])
   .pipe(concat('all.min.js'))
@@ -45,6 +50,7 @@ gulp.task('js', function() {
   }));
 });
 
+// Watch for PHP files in app/cities and move to dist
 gulp.task('php', function() {
   return gulp.src('app/cities/**/*.php')
   .pipe(gulp.dest(config.publicDir))
@@ -53,6 +59,7 @@ gulp.task('php', function() {
   }));
 });
 
+// Optimize Images w/ Cache
 gulp.task('images', function(){
   return gulp.src('app/images/**/*.+(png|jpg|jpeg|gif|svg|ico)')
   .pipe(cache(imagemin({
@@ -61,10 +68,12 @@ gulp.task('images', function(){
   .pipe(gulp.dest('dist/images'))
 });
 
+// Clean dist
 gulp.task('clean:dist', function() {
   return del.sync('dist');
 })
 
+// Spin up PHP server & BrowserSync after running css, js, and php. Watch for changes
 gulp.task('watch', ['css', 'js', 'php'], function() {
   connect.server({
     base: './dist',
@@ -88,6 +97,17 @@ gulp.task('watch', ['css', 'js', 'php'], function() {
   gulp.watch('app/images/**/*.+(png|jpg|jpeg|gif|svg|ico)', ['images']);
 });
 
-gulp.task('default', ['clean:dist', 'php', 'css', 'fonts', 'images', 'js'], function() {
+// Build dist after cleaning dist
+gulp.task('build', function(callback) {
+  runSequence('clean:dist',
+    ['php', 'css', 'fonts', 'images', 'js'],
+    callback
+  )
+})
 
+// Build dist
+gulp.task('default', function(callback) {
+  runSequence(['php', 'css', 'fonts', 'images', 'js'],
+  callback
+  )
 });
