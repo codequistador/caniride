@@ -2,6 +2,6 @@
 
 `bower install`
 
-`gulp`
+`gulp build`
 
 `gulp watch`
