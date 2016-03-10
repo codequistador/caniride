@@ -20,6 +20,7 @@ I would love for people to build out new cities or improve functionality. Follow
 ### The Basics
 
 This repo contains a gulp script that:
+
 1. Spins up a PHP server
 2. Looks for PHP files and places them in the `dist` directory
 3. Compiles the Bootstrap framework for styling. 
