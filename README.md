@@ -17,7 +17,7 @@ I would love for people to build out new cities or improve functionality. Follow
 5. Push to your origin repository.
 6. Create a new PR in GitHub.
 
-The app is currently hosted on my slow Dreamhost account.
+The app is currently hosted on my slow Dreamhost account and can be accessed at [www.caniride.us/slc]:(http://www.caniride.us/slc)
 
 "The work" would likely involve creating a new directory in the `app/cities` directory with a city name (eg. denver), adding an index.php to it, copying index.php from the `app/cities/slc` directory and adding trails in your city.
  
