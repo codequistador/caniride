@@ -29,7 +29,8 @@ This repo contains a gulp script that:
 
 1. Spins up a PHP server
 2. Looks for PHP files and places them in the `dist` directory
-3. Compiles the Bootstrap framework for styling. 
+3. Compiles custom JS and CSS.
+4. Compiles the Bootstrap framework for styling. 
 
 ### Dependencies
 
