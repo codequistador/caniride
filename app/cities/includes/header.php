@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('America/Denver');
+date_default_timezone_set($time_zone);
 function is_odd( $int ) {
 	if ( $int & 1 ) :
 		return 'odd';
@@ -10,18 +10,6 @@ function is_odd( $int ) {
 
 $day = date('j');
 $status = is_odd($day);
-
-if ( $status == 'even' ) {
-	$mcstatus = 'open';
-	$mcclass = 'alert-success';
-	$ccstatus = 'closed';
-	$ccclass = 'alert-danger';
-} else {
-	$mcstatus = 'closed';
-	$mcclass = 'alert-danger';
-	$ccstatus = 'open';
-	$ccclass = 'alert-success';
-}
 
 ?>
 <!DOCTYPE html>
@@ -36,7 +24,7 @@ if ( $status == 'even' ) {
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Where Can I Ride? | Salt Lake City</title>
+	<title>Where Can I Ride? | <?php echo $city; ?></title>
 
 	<link rel="shortcut icon" href="../images/favicon.ico">
 	<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">

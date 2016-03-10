@@ -17,10 +17,10 @@ I would love for people to build out new cities or improve functionality. Follow
 5. Push to your origin repository.
 6. Create a new PR in GitHub.
 
-The app is currently hosted on my slow Dreamhost account. I am happy to host additional cities as well.
+The app is currently hosted on my slow Dreamhost account.
 
-"The work" would likely involve creating a new directory in the `app/cities` directory with a city name (eg. denver), adding an index.php to it, and adding trails.
-
+"The work" would likely involve creating a new directory in the `app/cities` directory with a city name (eg. denver), adding an index.php to it, copying index.php from the `app/cities/slc` directory and adding trails in your city.
+ 
 ## Getting Started
 
 ### The Basics

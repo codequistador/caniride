@@ -1,4 +1,23 @@
-<?php include '../includes/header.php'; ?>
+<?php 
+
+$city = 'Salt Lake City';
+$time_zone = 'America/Denver';
+
+include '../includes/header.php'; 
+
+if ( $status == 'even' ) {
+	$mcstatus = 'open';
+	$mcclass = 'alert-success';
+	$ccstatus = 'closed';
+	$ccclass = 'alert-danger';
+} else {
+	$mcstatus = 'closed';
+	$mcclass = 'alert-danger';
+	$ccstatus = 'open';
+	$ccclass = 'alert-success';
+}
+
+?>
 
 <div class="container-fluid">
   <div class="row">
