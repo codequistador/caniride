@@ -10,11 +10,13 @@ if ( $status == 'even' ) {
 	$mcclass = 'alert-success';
 	$ccstatus = 'closed';
 	$ccclass = 'alert-danger';
+  $dogstatus = 'Doggos on-leash.';
 } else {
 	$mcstatus = 'closed';
 	$mcclass = 'alert-danger';
 	$ccstatus = 'open';
 	$ccclass = 'alert-success';
+  $dogstatus = 'Doggos off-leash! Party Time!';
 }
 
 ?>
@@ -33,7 +35,7 @@ if ( $status == 'even' ) {
 			  <div class="panel-body">
 			    <div class="alert <?php echo $mcclass; ?>">
 						<h2>Upper MillCreek</h2>
-						<h3>is <?php echo $mcstatus; ?> to bicycles today.*</h3>
+						<h3>is <?php echo $mcstatus; ?> to bicycles today. <?php echo $dogstatus ?>*</h3>
 					</div>
 					<div class="alert <?php echo $ccclass; ?>">
 						<h2>City Creek Canyon</h2>
